@@ -73,6 +73,16 @@ var API = {
   }
 };
 
+// Mirror the password into a same-site cookie so <img src> requests for
+// photos/logo (which cannot send the x-app-password header) are authorized.
+function setPasswordCookie(val){
+  try {
+    var secure = location.protocol === 'https:' ? '; Secure' : '';
+    if (val) document.cookie = 'victory_app_pw=' + encodeURIComponent(val) + '; path=/; max-age=31536000; SameSite=Strict' + secure;
+    else document.cookie = 'victory_app_pw=; path=/; max-age=0; SameSite=Strict' + secure;
+  } catch(e){}
+}
+
 async function withAuthRetry(fn){
   try { return await fn(); }
   catch(e){
@@ -92,6 +102,7 @@ function showAuthGate(){
       var val = input.value;
       API.password = val;
       try { localStorage.setItem('victory_app_password', val); } catch(e){}
+      setPasswordCookie(val);
       API.request('proposals').then(function(){
         gate.classList.add('hidden');
         btn.removeEventListener('click', tryLogin);
@@ -145,6 +156,7 @@ var ACTIVE_TAB = 'dados';
 /* ============================== boot / data loading ============================== */
 async function boot(){
   try { API.password = localStorage.getItem('victory_app_password') || null; } catch(e){}
+  setPasswordCookie(API.password);
   renderTab();
   try {
     await withAuthRetry(async function(){ await refreshAll(); });
