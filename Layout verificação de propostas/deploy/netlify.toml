@@ -1,9 +1,0 @@
-[build]
-  publish = "public"
-  functions = "netlify/functions"
-
-[functions]
-  node_bundler = "esbuild"
-
-# SPA-style fallback is not needed (single page), but keep functions reachable
-# at the default /.netlify/functions/<name> path used by public/index.html.
