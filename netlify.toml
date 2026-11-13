@@ -1,0 +1,5 @@
+# O app fica dentro da pasta "deploy". Esta configuração diz ao Netlify
+# para construir a partir dela (lá estão o netlify.toml, package.json,
+# public/ e netlify/functions/).
+[build]
+  base = "deploy"
