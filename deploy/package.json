@@ -1,0 +1,9 @@
+{
+  "name": "victory-propostas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gerador de propostas comerciais Victory Hoteis - formulario em HTML + funcoes serverless no Netlify, com biblioteca de fotos e propostas salvas em Netlify Blobs.",
+  "dependencies": {
+    "@netlify/blobs": "^8.2.0"
+  }
+}
