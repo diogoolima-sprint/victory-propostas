@@ -60,6 +60,8 @@ as fotos e propostas salvas.
 2. Nome: `APP_PASSWORD` — Valor: a senha que você quiser.
 3. Salve e vá em **Deploys → Trigger deploy → Deploy site**.
 4. Ao abrir o site, ele pede a senha uma vez (fica guardada no navegador).
+   Para trocar a senha, altere o valor de `APP_PASSWORD` e faça um novo
+   deploy — todos precisarão digitar a nova senha.
 
 ### 4. Usar o app
 
